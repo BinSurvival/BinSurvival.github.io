@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+    <html lang="zh">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>号码选择</title>
+            <link rel="stylesheet" href="css/style.css">
+        </head>
+        
+        <body>
+            <header>
+                <h1>欢迎来到游戏</h1>
+                <nav>
+                    <a href="index.html">返回主页</a>
+                    <a href="roles.html">游戏规则</a>
+                </nav>
+            </header>
+
+            <main>
+                <h2>选择你的玩家号码</h2>
+                <input type="number" id="player-number-input" placeholder="输入号码（1-16）" min="1" max="16">
+                <button id="start-game">开始游戏</button>
+            </main>
+
+            <footer>
+                <p>&copy; 2024 游戏网站</p>
+            </footer>
+
+            <script>
+    document.getElementById("start-game").onclick = function() {
+        const playerNumber = document.getElementById("player-number-input").value;
+        if (playerNumber >= 1 && playerNumber <= 16) {
+            window.location.href = `player.html?player=${playerNumber}`;
+        } else {
+            alert("请输入有效的玩家号码（1-16）！");
+        }
+    };
+            </script>
+        </body>
+    </html>

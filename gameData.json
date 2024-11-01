@@ -1,0 +1,36 @@
+{
+  "assignedRoles": [
+    {
+      "player": "1",
+      "role": "A4"
+    },
+    {
+      "player": "2",
+      "role": "A3"
+    },
+    {
+      "player": "3",
+      "role": "A5"
+    },
+    {
+      "player": "4",
+      "role": "A12"
+    },
+    {
+      "player": "5",
+      "role": "A6"
+    },
+    {
+      "player": "6",
+      "role": "A2"
+    },
+    {
+      "player": "7",
+      "role": "A1"
+    },
+    {
+      "player": "8",
+      "role": "A7"
+    }
+  ]
+}

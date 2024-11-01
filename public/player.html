@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+    <html lang="zh">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>玩家页面</title>
+            <link rel="stylesheet" href="css/style.css">
+        </head>
+
+        <body>
+            <header>
+                <h1>欢迎，<span id="player-number"></span>号玩家</h1>
+            </header>
+
+            <main>
+                <p>你的角色是：<span id="player-role"></span></p>
+            </main>
+
+            <footer>
+                <p>&copy; 2024 游戏网站</p>
+            </footer>
+
+            <script>
+                const roleTranslations =
+                    {
+                        "A1": "侦探鹅",
+                        "A2": "殡仪鹅",
+                        "A3": "观鸟鹅",
+                        "A4": "通灵鹅",
+                        "A5": "工程师鹅",
+                        "A6": "警长鹅",
+                        "A7": "正义鹅",
+                        "A8": "复仇鹅",
+                        "A9": "网红鹅",
+                        "A10": "加拿大鹅",
+                        "A11": "冒险家鹅",
+                        "A12": "保镖鹅",
+                        "A13": "大白鹅",
+                        "A14": "星界鹅",
+                        "A15": "锁匠鹅",
+                        "A16": "模仿鹅",
+                        "B1": "恋人",
+                        "B2": "鸽子",
+                        "B3": "猎鹰",
+                        "B4": "呆呆鸟王",
+                        "B5": "秃鹫",
+                        "B6": "鹈鹕",
+                        "C1": "刺客鸭",
+                        "C2": "间谍鸭",
+                        "C3": "连环杀手鸭",
+                        "C4": "超能力鸭",
+                        "C5": "身份窃贼鸭",
+                        "C6": "禁语鸭",
+                        "C7": "跳跳鸭",
+                        "C8": "派对鸭",
+                        "C9": "专业杀手鸭",
+                        "C10": "术士鸭"
+                    };
+
+                document.addEventListener("DOMContentLoaded", function ()
+                {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const playerNumber = urlParams.get("player");
+
+                    if (!playerNumber)
+                        {
+                            console.error("玩家编号缺失！");
+                            return;
+                        }
+
+                document.getElementById("player-number").innerText = playerNumber;
+
+                fetch('/gameData')
+                .then(response => response.json())
+                .then(data =>
+                    {
+                        const assignedRoles = data.assignedRoles || [];
+                        const playerRole = assignedRoles.find(role => role.player === playerNumber)?.role || "无角色分配";
+                        const translatedRole = roleTranslations[playerRole] || "未知角色";
+                        document.getElementById("player-role").innerText = playerRole;
+                        document.getElementById("player-role").innerText = translatedRole;
+                    })
+                    .catch(error =>
+                    {
+                        console.error("获取角色时发生错误：", error);
+                    });
+                });
+            </script>
+        </body>
+    </html>
